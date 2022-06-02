@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiTest", "WebApiTest\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPOIExportTest", "NPOIExportTest\NPOIExportTest.csproj", "{6C258525-A43E-4D6D-9349-F1B6530BBF21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundServiceTest", "BackgroundServiceTest\BackgroundServiceTest.csproj", "{F5E8F86C-D4AF-4B96-A6C5-1DF012008451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6C258525-A43E-4D6D-9349-F1B6530BBF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C258525-A43E-4D6D-9349-F1B6530BBF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C258525-A43E-4D6D-9349-F1B6530BBF21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E8F86C-D4AF-4B96-A6C5-1DF012008451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E8F86C-D4AF-4B96-A6C5-1DF012008451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E8F86C-D4AF-4B96-A6C5-1DF012008451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E8F86C-D4AF-4B96-A6C5-1DF012008451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
