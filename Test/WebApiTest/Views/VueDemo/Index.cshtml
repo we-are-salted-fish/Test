@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <father-child p1="ypf1" :p2="p2" p3="true"></father-child>
+    </div>
+
+    <script src="~/vue.js"></script>
+    <script>
+
+        // 全局组件
+        Vue.component('HelloWord', {
+            template: `<div>我是HelloWord组件</div>`
+        });
+
+        // 父组件向子组件中传值
+        Vue.component('father-child', {
+            props: ['p1', 'p2', 'p3'],
+            data: function () {
+                return {
+                    msg: '我是用来看父组件向子组件中传值的'
+                }
+            },
+            template: `
+                     <div>
+                         <div>{{msg+"--"+p1+"--"+p2+"--"+p3}}</div>
+                         <div>p3的类型为:{{typeof p3}}</div>
+                     </div>                `
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+    </script>
+</body>
+</html>
+
