@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTest.Models;
 
 namespace WebApiTest
 {
@@ -30,6 +32,9 @@ namespace WebApiTest
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiTest", Version = "v1" });
             });
+
+            // 注入EF上下文
+            services.AddDbContext<FuckWayneDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("conn")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

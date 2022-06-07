@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiTest.Models;
 
 namespace WebApiTest.Controllers
 {
@@ -17,10 +18,12 @@ namespace WebApiTest.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly FuckWayneDbContext _context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, FuckWayneDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
@@ -51,6 +54,34 @@ namespace WebApiTest.Controllers
         public string FuckWayne1([FromForm] string para1)
         {
             return para1;
+        }
+
+        [HttpPost]
+        public async Task<string> TestSQliteCRUD()
+        {
+            var res = string.Empty;
+            using (var db = _context)
+            {
+                //1.新增
+                var userInfo = new UserInfo()
+                {
+                    Id = Guid.NewGuid().ToString("N"),
+                    Name = "FuckWayne",
+                    Sex = "男"
+                };
+                await db.Set<UserInfo>().AddAsync(userInfo);
+                int count = await db.SaveChangesAsync();
+                res += $"\r\n成功插入{count}条数据";
+
+                //2.查询
+                List<UserInfo> uList = db.Set<UserInfo>().ToList();
+                foreach (var item in uList)
+                {
+                    res += $"\r\nid为：{item.Id},名字为：{item.Name},性别为：{item.Sex}";
+                }
+            }
+
+            return res;
         }
     }
 }
